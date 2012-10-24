@@ -70,13 +70,7 @@ class Command(object):
                     bufsize=0,
                     cwd=cwd,
                 )
-
-                if sys.version_info[0] >= 3:
-                    self.out, self.err = self.process.communicate(
-                        input = bytes(self.data, "UTF-8") if self.data else None 
-                    )
-                else:
-                    self.out, self.err = self.process.communicate(self.data)
+                self.out, self.err = self.process.communicate(self.data)
             except Exception as exc:
                 self.exc = exc
               
